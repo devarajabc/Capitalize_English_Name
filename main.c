@@ -1,54 +1,41 @@
-#include<stdio.h>
-#include<string.h>
-#include <ctype.h>
-#define STRINGLEN 2000
-int main(void)
-{
-    /*do {
-     scanf("%c", &ch);
-      } while (ch != '\n');
-      */
-    //int n;
-    //scanf("%d",&n);
-    char string[STRINGLEN];
-    int count =-1;
-    //scanf("%s",string);
+#include<stdio.h> // Including header file
+#include<ctype.h>
 
-    do {
-        count+=1;
-        scanf("%c",&string[count]);
-    }while(string[count]!='\n');
+int main(){
 
-    for (int i = 0; i < strlen(string); i++) {
-        if (string[i] == '.' || string[i] == ',' || string[i] == ';') {
-            string[i] = '\n';
-        }
+    int myChar; // creating a variable to store the input
+    int time_to_upper=0;
+    myChar = getchar();
+    int n;
+    scanf("%d",&n);
+    int first=1;
 
-    }
-    for (int i = 1; i < strlen(string); i++)
+
+    while(n)
     {
-        if(string[i-1]==' '||string[i-1]=='\n')
-        {
-            string[i]= toupper(string[i]);
-        }
-       else
-        {
-            string[i]= tolower(string[i]);
-        }
+        myChar = getchar(); // use getchar to fetch input
 
+        if(myChar == '.' || myChar == ',' || myChar == ';')
+        {
+            printf("\n");
+            time_to_upper+=1;
+        }
+        else if(myChar==' ')
+        {
+            time_to_upper+=1;
+            printf("%c",myChar);
+        }
+        else if(time_to_upper!=0||first==1)
+        {
+            printf("%c", toupper(myChar));
+            time_to_upper=0;
+        }
+        else {
+            printf("%c", tolower(myChar)); // print input on screen
+        }
+        first++;
 
     }
-    for(int i=0;i<count;i++)
-    {
-        printf("%c", string[i]);
-    }
-
-
-
-    //printf("<%c>",string[1]);
-
-
-
 
     return 0;
 }
