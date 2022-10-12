@@ -4,36 +4,37 @@
 int main(){
 
     int myChar; // creating a variable to store the input
-    int time_to_upper=0;
-    myChar = getchar();
+    int time_to_upper=1;
+    //myChar = getchar(); nononono
     int n;
-    scanf("%d",&n);
-    int first=1;
+    scanf("%d\n",&n);
+    //int first=1;
 
-
-    while(n)
+//可以遇到n次
+    while(n>0)
     {
         myChar = getchar(); // use getchar to fetch input
 
-        if(myChar == '.' || myChar == ',' || myChar == ';')
+        if(myChar == '.' || myChar == ',' || myChar == ';')//ending
         {
             printf("\n");
             time_to_upper+=1;
+            n--;
         }
-        else if(myChar==' ')
+        else if(myChar==' ')//space
         {
             time_to_upper+=1;
             printf("%c",myChar);
         }
-        else if(time_to_upper!=0||first==1)
+        else if(time_to_upper!=0)//after space or \n
         {
             printf("%c", toupper(myChar));
             time_to_upper=0;
         }
-        else {
+        else {//normal one
             printf("%c", tolower(myChar)); // print input on screen
         }
-        first++;
+
 
     }
 
